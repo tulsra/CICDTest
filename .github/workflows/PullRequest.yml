@@ -15,9 +15,15 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - name: Git - Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - run: bundle exec rake
 
       - name: Print Path
         run: xcode-select -print-path
@@ -31,11 +37,6 @@ jobs:
       - name: Install gems
         run: bundle install
 
-      - name: Setup - Ruby and bundler dependencies
-        uses: ruby/setup-ruby@v1
-          with:
-            ruby-version: '3.0'
-            bundler-cache: true
       - name: Test - Fastlane tests
         run: bundle exec fastlane tests
 
