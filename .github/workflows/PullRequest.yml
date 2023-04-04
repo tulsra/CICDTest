@@ -32,10 +32,10 @@ jobs:
         run: bundle install
 
       - name: Setup - Ruby and bundler dependencies
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.7.2
-          bundler-cache: true
+        uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: '3.0'
+            bundler-cache: true
       - name: Test - Fastlane tests
         run: bundle exec fastlane tests
 
