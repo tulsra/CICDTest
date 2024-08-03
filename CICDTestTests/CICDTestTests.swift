@@ -11,7 +11,7 @@ import XCTest
 final class CICDTestTests: XCTestCase {
 
     func testExample() throws {
-      XCTAssertEqual(2*2, 3)
+      XCTAssertEqual(2*2, 4)
     }
 
 }
